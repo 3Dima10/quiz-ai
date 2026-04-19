@@ -45,7 +45,7 @@ cd quiz-ai
 ollama serve
 
 # Скачай модель (выбери одну)
-ollama pull llama3.1       # рекомендуется
+ollama pull gemma4:31b-cloud       # рекомендуется
 ollama pull mistral
 ollama pull qwen2.5
 ```
