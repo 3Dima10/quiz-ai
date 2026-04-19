@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 220px; padding: 16px; font-family: sans-serif;
+      background: #0f172a; color: #f1f5f9;
+    }
+    h3 { margin: 0 0 12px; font-size: 15px; color: #7c3aed; }
+    button {
+      width: 100%; padding: 10px; border: none; border-radius: 8px;
+      cursor: pointer; font-size: 14px; font-weight: 600; margin-bottom: 8px;
+    }
+    .btn-solve { background: #7c3aed; color: white; }
+    .btn-solve:hover { background: #6d28d9; }
+    .status { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h3>🤖 QuizAI Solver</h3>
+  <button class="btn-solve" id="solveBtn">Ответить на вопрос</button>
+  <div class="status" id="status">Готов к работе</div>
+
+  <script>
+    document.getElementById('solveBtn').addEventListener('click', async () => {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      chrome.tabs.sendMessage(tab.id, { action: 'solve' });
+      document.getElementById('status').textContent = 'Отправил запрос...';
+      setTimeout(() => {
+        document.getElementById('status').textContent = 'Готов к работе';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
