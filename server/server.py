@@ -97,4 +97,4 @@ Reply with ONLY the number (0, 1, 2...) of the correct answer. No explanation.""
 
 if __name__ == '__main__':
     print(f"QuizAI Server (Ollama/{OLLAMA_MODEL}) запущен на http://localhost:5000")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
